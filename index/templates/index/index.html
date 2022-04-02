@@ -26,8 +26,12 @@
                 <a class="navbar-brand" href={% url 'index' %}>Home</a>
                 <a class="navbar-brand" href={% url 'pages' %}>Blog</a>
                 <a class="navbar-brand" href={% url 'accounts' %}>Cuenta</a>
-                <a class="navbar-brand" href={% url 'login' %}>Login</a>
-                <a class="btn btn-primary" href="#signup">Sign Up</a>
+                {% if request.user.is_authenticated %}
+                    <a class="navbar-brand" href={% url 'logout' %}>Logout</a>
+                {% else %}
+                    <a class="navbar-brand" href={% url 'login' %}>Login</a>               
+                    <a class="btn btn-primary" href={% url 'signup' %}>Sign Up</a>
+                {% endif %}              
             </div>
         </nav>
         <!-- Masthead-->
