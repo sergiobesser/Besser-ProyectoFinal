@@ -1,7 +1,10 @@
+import email
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login as django_login, authenticate
-from .forms import MyUserForm
+from .forms import MyUserForm, EditForm
+from django.contrib.auth.decorators import login_required
+from .models import UserExtension
 
 
 def accounts(request):
@@ -52,3 +55,46 @@ def signup(request):
         
     signup_form = MyUserForm()
     return render(request, 'accounts/signup_form.html', {'signup_form': signup_form})
+
+
+@login_required
+def edit(request):
+    
+    user_extension_logued, _ = UserExtension.objects.get_or_create(user=request.user)
+    
+    if request.method == 'POST':
+        edit_form = EditForm(request.POST, request.FILES)
+        
+        if edit_form.is_valid():
+            request.user.first_name = edit_form.cleaned_data['first_name']
+            request.user.last_name = edit_form.cleaned_data['last_name']
+            request.user.email = edit_form.cleaned_data['email']
+            user_extension_logued.avatar = edit_form.cleaned_data['avatar']
+            user_extension_logued.link = edit_form.cleaned_data['link']
+            user_extension_logued.more_description = edit_form.cleaned_data['more_description']
+            
+            if edit_form.cleaned_data['password1'] != '' and edit_form.cleaned_data['password1'] == edit_form.cleaned_data['password2']:
+                request.user.set_password(edit_form.cleaned_data['password1'])
+            
+            request.user.save()
+            user_extension_logued.save()
+            
+            return redirect('index')
+        else:
+            return render(request, 'accounts/edit_user.html', {'edit_form': edit_form, 'msj': 'El formulario no es valido'})
+        
+    edit_form = EditForm(
+        initial={
+            'first_name': request.user.first_name,
+            'last_name': request.user.last_name,
+            'email': request.user.email,            
+            'password1': '',
+            'password2': '',
+            'avatar': user_extension_logued.avatar,
+            'link': user_extension_logued.link,
+            'more_description': user_extension_logued.more_description
+        }
+    )
+    return render(request, 'accounts/edit_user.html', {'edit_form': edit_form})
+    
+    

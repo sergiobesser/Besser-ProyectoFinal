@@ -1,0 +1,24 @@
+{% extends 'index/index.html' %}
+
+{% block head %}
+<title>Profile</title>
+{% endblock head %}
+
+{% block header_block %}
+{% endblock header_block %}
+
+{% block body_block %}
+    <p>
+        {% if msj %}
+            {{msj}}
+        {% endif %}
+    </p>
+
+    <form action={% url 'profile' %} method='post' enctype='multipart/form-data'>
+        {% csrf_token %}
+        <table>
+            {{edit_form.as_table}}
+        </table>
+        <button>Guardar</button>
+    </form>
+{% endblock body_block %}
