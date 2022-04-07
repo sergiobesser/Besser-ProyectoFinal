@@ -1,0 +1,18 @@
+{% extends 'index/index.html' %}
+
+{% block head %}
+<title>Blog</title>
+{% endblock head %}
+
+{% block header_block %}
+{% endblock header_block %}
+
+{% block body_block %}
+
+    <form method='post'>
+        {% csrf_token %}
+        Confirma que desea eliminar este elemento?
+        <input type="submit" placeholder='Confirmo'>
+    </form>
+
+{% endblock body_block %}

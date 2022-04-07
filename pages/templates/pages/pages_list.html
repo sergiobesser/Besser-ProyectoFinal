@@ -1,0 +1,21 @@
+{% extends 'index/index.html' %}
+
+{% block head %}
+<title>Blog</title>
+{% endblock head %}
+
+{% block header_block %}
+{% endblock header_block %}
+
+{% block body_block %}
+
+    {% for page in object_list %}
+    <li>
+        {{page}}
+        <a href={% url 'pages_detail'  %}>Ver más</a>
+        <a href={% url 'pages_edit'  %}>Editar</a>
+        <a href={% url 'pages_delete'  %}>Borrar</a>
+    </li>
+    {% endfor %}
+
+{% endblock body_block %}
