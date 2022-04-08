@@ -9,10 +9,22 @@
 
 {% block body_block %}
 
-    <form method+'post'>
+    <a href={% url 'pages_list' %}>Volver</a>
+
+    <form action ="" method='post'>
         {% csrf_token %}
-        {{form.as_p}}
-        <input type="submit" value='Actualizar'>
+        <table>
+            {{form.as_table}}
+        </table>
+        <button>Enviar</button>
     </form>
 
 {% endblock body_block %}
+
+
+
+{% comment %} <form method='post'>
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value='Enviar'>
+</form> {% endcomment %}

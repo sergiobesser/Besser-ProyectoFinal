@@ -1,6 +1,6 @@
 from django.db import models
 
-class Page(models.Model):
+class Pages(models.Model):
     title = models.CharField(max_length=100)
     subtitle = models.CharField(max_length=250)
     body = models.TextField()

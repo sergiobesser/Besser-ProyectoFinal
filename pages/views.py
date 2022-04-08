@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Page
+from .models import Pages
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import UpdateView, DeleteView, CreateView
@@ -10,21 +10,27 @@ def pages(request):
 
 
 class List(ListView):
-    model = Page
+    model = Pages
     template_name = 'pages/pages_list.html'
 
 
 class Detail(DetailView):
-    model = Page
+    model = Pages
     template_name = 'pages/pages_detail.html'
 
 
+class New(CreateView):
+    model = Pages
+    success_url = '/pages/list/'  
+    fields = ['title', 'subtitle', 'body', 'author', 'image', 'date']
+
+
 class Edit(UpdateView):
-    model = Page
-    success_url = 'pages/pages_list.html'  
-    fields = 'title', 'subtitle', 'body', 'author', 'image'
+    model = Pages
+    success_url = '/pages/list/'  
+    fields = ['title', 'subtitle', 'body', 'author', 'image', 'date']
 
 
 class Delete(DeleteView):
-    model = Page
-    success_url = 'pages/pages_list.html'
+    model = Pages
+    success_url = '/pages/list/'

@@ -1,7 +1,7 @@
 {% extends 'index/index.html' %}
 
 {% block head %}
-<title>Blog</title>
+<title>Detalle</title>
 {% endblock head %}
 
 {% block header_block %}
@@ -9,6 +9,13 @@
 
 {% block body_block %}
 
-        {{object.page}}
+        <a href={% url 'pages_list' %}>Volver</a>
+
+        <p>{{object.title}}</p>
+        <p>{{object.subtitle}}</p>
+        <p>{{object.body}}</p>
+        <p>{{object.author}}</p>
+        <p>{{object.image}}</p>
+        <p>{{object.date}}</p>
 
 {% endblock body_block %}

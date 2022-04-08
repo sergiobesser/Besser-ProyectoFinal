@@ -1,4 +1,4 @@
 from django.contrib import admin
-from .models import Page
+from .models import Pages
 
-admin.site.register(Page)
+admin.site.register(Pages)

@@ -1,7 +1,7 @@
 {% extends 'index/index.html' %}
 
 {% block head %}
-<title>Blog</title>
+<title>Lista</title>
 {% endblock head %}
 
 {% block header_block %}
@@ -9,12 +9,16 @@
 
 {% block body_block %}
 
+    <p>
+        <a href={% url 'pages_new' %}>Nueva entrada</a>
+    </p>
+
     {% for page in object_list %}
     <li>
         {{page}}
-        <a href={% url 'pages_detail'  %}>Ver más</a>
-        <a href={% url 'pages_edit'  %}>Editar</a>
-        <a href={% url 'pages_delete'  %}>Borrar</a>
+        <a href={% url 'pages_detail' page.id %}>Ver más</a>
+        <a href={% url 'pages_edit'  page.id %}>Editar</a>
+        <a href={% url 'pages_delete'  page.id %}>Borrar</a>
     </li>
     {% endfor %}
 
