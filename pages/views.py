@@ -3,6 +3,7 @@ from .models import Pages
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import UpdateView, DeleteView, CreateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 def pages(request):
@@ -19,18 +20,18 @@ class Detail(DetailView):
     template_name = 'pages/pages_detail.html'
 
 
-class New(CreateView):
+class New(LoginRequiredMixin, CreateView):
     model = Pages
     success_url = '/pages/list/'  
     fields = ['title', 'subtitle', 'body', 'author', 'image', 'date']
 
 
-class Edit(UpdateView):
+class Edit(LoginRequiredMixin, UpdateView):
     model = Pages
     success_url = '/pages/list/'  
     fields = ['title', 'subtitle', 'body', 'author', 'image', 'date']
 
 
-class Delete(DeleteView):
+class Delete(LoginRequiredMixin, DeleteView):
     model = Pages
     success_url = '/pages/list/'
