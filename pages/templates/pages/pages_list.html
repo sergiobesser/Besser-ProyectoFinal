@@ -14,13 +14,18 @@
     </p>
 
     {% for page in object_list %}
-    
-        <li>
-            {{page}}
-            <a href={% url 'pages_detail' page.id %}>Ver más</a>
-            <a href={% url 'pages_edit'  page.id %}>Editar</a>
-            <a href={% url 'pages_delete'  page.id %}>Borrar</a>
-        </li>
+        <ul>
+            <li>
+                {{page}}
+                <a href={% url 'pages_detail' page.id %}>Ver más</a>
+                <a href={% url 'pages_edit'  page.id %}>Editar</a>
+                <a href={% url 'pages_delete'  page.id %}>Borrar</a>
+            </li>
+        </ul>
+        
     {% endfor %}
 
 {% endblock body_block %}
+
+{% block footer %}
+{% endblock footer %}
