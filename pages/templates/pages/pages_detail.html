@@ -14,8 +14,8 @@
         <p>{{object.title}}</p>
         <p>{{object.subtitle}}</p>
         <p>{{object.body | safe}}</p>
-        <p>{{object.author}}</p>
         <p><img src="{{object.image.url}}" alt="{{object.image}}"></p>
-        <p>{{object.date}}</p>
+        <p>Autor: {{object.author}}</p>
+        <p>Fecha de creación: {{object.date}}</p>
 
 {% endblock body_block %}

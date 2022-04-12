@@ -14,6 +14,7 @@
     </p>
 
     {% for page in object_list %}
+    
     <li>
         {{page}}
         <a href={% url 'pages_detail' page.id %}>Ver más</a>

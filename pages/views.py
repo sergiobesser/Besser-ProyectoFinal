@@ -23,13 +23,13 @@ class Detail(DetailView):
 class New(LoginRequiredMixin, CreateView):
     model = Pages
     success_url = '/pages/list/'  
-    fields = ['title', 'subtitle', 'body', 'author', 'image', 'date']
+    fields = ['title', 'subtitle', 'body', 'image', 'author']
 
 
 class Edit(LoginRequiredMixin, UpdateView):
     model = Pages
     success_url = '/pages/list/'  
-    fields = ['title', 'subtitle', 'body', 'author', 'image', 'date']
+    fields = ['title', 'subtitle', 'body', 'image', 'author']
 
 
 class Delete(LoginRequiredMixin, DeleteView):
