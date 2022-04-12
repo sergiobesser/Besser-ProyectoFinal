@@ -15,12 +15,12 @@
 
     {% for page in object_list %}
     
-    <li>
-        {{page}}
-        <a href={% url 'pages_detail' page.id %}>Ver más</a>
-        <a href={% url 'pages_edit'  page.id %}>Editar</a>
-        <a href={% url 'pages_delete'  page.id %}>Borrar</a>
-    </li>
+        <li>
+            {{page}}
+            <a href={% url 'pages_detail' page.id %}>Ver más</a>
+            <a href={% url 'pages_edit'  page.id %}>Editar</a>
+            <a href={% url 'pages_delete'  page.id %}>Borrar</a>
+        </li>
     {% endfor %}
 
 {% endblock body_block %}
