@@ -7,10 +7,6 @@ from django.contrib.auth.decorators import login_required
 from .models import UserExtension
 
 
-def accounts(request):
-    return render(request, 'accounts/accounts.html', {})
-
-
 def login_view(request):
     return render(request, 'accounts/login_view.html', {})
 
@@ -96,5 +92,11 @@ def edit(request):
         }
     )
     return render(request, 'accounts/edit_user.html', {'edit_form': edit_form})
+
+
+@login_required
+def profile(request):
+    user_extension, _ = UserExtension.objects.get_or_create(user=request.user)
+    return render(request, 'accounts/profile.html', {'user_extension': user_extension})
     
     

@@ -1,0 +1,27 @@
+{% extends 'index/index.html' %}
+
+{% block head %}
+<title>Profile</title>
+{% endblock head %}
+
+{% block header_block %}
+{% endblock header_block %}
+
+{% block body_block %}
+
+<a href={% url 'edit' %}>Editar usuario</a>
+ 
+<ul>
+    <li>Email: {{request.user.email}}</li>
+    <li>Nombre: {{request.user.first_name}}</li>
+    <li>Apellido: {{request.user.last_name}}</li>
+    <li>Avatar: <img src="{{user_extension.avatar.url}}" alt="Imagen de perfil"></li>
+    <li>Link: {{user_extension.link}}</li>
+    <li>More description: {{user_extension.more_description}}</li>
+</ul>
+
+
+{% endblock body_block %}
+
+{% block footer %}
+{% endblock footer %}

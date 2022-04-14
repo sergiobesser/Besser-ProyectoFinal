@@ -13,15 +13,20 @@
         <a href={% url 'pages_new' %}>Nueva entrada</a>
     </p>
 
-    {% for page in object_list %}
-        <ul>
-            <li>
-                {{page}}
-                <a href={% url 'pages_detail' page.id %}>Ver más</a>
-                <a href={% url 'pages_edit'  page.id %}>Editar</a>
-                <a href={% url 'pages_delete'  page.id %}>Borrar</a>
-            </li>
-        </ul>
+     {% for page in object_list %}
+        {% if page %}
+            <ul>
+                <li>
+                    {{page}}
+                    <a href={% url 'pages_detail' page.id %}>Ver más</a>
+                    <a href={% url 'pages_edit'  page.id %}>Editar</a>
+                    <a href={% url 'pages_delete'  page.id %}>Borrar</a>
+                </li>
+            </ul>
+        {% else %}
+            <p>No hay páginas aún</p>
+        {% endif %}
+        
         
     {% endfor %}
 
