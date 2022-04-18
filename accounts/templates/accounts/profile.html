@@ -15,7 +15,13 @@
     <li>Email: {{request.user.email}}</li>
     <li>Nombre: {{request.user.first_name}}</li>
     <li>Apellido: {{request.user.last_name}}</li>
-    <li>Avatar: <img src="{{user_extension.avatar.url}}" alt="Imagen de perfil"></li>
+    <li>Avatar: 
+        {% if user_extension.avatar %}
+            <img src="{{user_extension.avatar.url}}" alt="Imagen de perfil">
+        {% else %} 
+            No Image
+        {% endif %}
+    </li>    
     <li>Link: {{user_extension.link}}</li>
     <li>More description: {{user_extension.more_description}}</li>
 </ul>
