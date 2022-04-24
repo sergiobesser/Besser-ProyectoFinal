@@ -75,7 +75,7 @@ def edit(request):
             request.user.save()
             user_extension_logued.save()
             
-            return redirect('index')
+            return redirect('profile')
         else:
             return render(request, 'accounts/edit_user.html', {'edit_form': edit_form, 'msj': 'El formulario no es valido'})
         

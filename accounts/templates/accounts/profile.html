@@ -17,7 +17,10 @@
     <li>Apellido: {{request.user.last_name}}</li>
     <li>Avatar: 
         {% if user_extension.avatar %}
-            <img src="{{user_extension.avatar.url}}" alt="Imagen de perfil">
+            <img src="{{user_extension.avatar.url}}" alt="Imagen de perfil" height=100px>
+            <p>
+                <a href= "{{user_extension.avatar.url}}" alt="Imagen de perfil" target="blank">Image</a>
+            </p>
         {% else %} 
             No Image
         {% endif %}
